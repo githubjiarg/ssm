@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="./static/css/login.css"/>
+</head>
+<body>
+    <div class="main">
+        <h2>欢迎登陆SSM框架，请登录 </h2>
+        <div style="margin: 20px 0px;">
+            <h3>
+                <b style="color: rgb(211,13,23);">服务端口：</b>
+                <span id="server_port"></span>
+            </h3>
+        </div>
+        <div style="padding: 10px 5px;">
+            <label>账号：</label>
+            <label>
+                <input type="text" maxlength="20" id="userName">
+            </label>
+        </div>
+        <div style="padding: 10px 5px;">
+            <label>密码：</label>
+            <label>
+                <input type="password" maxlength="16" id="password">
+            </label>
+        </div>
+        <div style="padding: 20px 5px;">
+            <button class="btn" onclick="login();">登 陆</button>
+            <button class="btn" onclick="clear();">重 置</button>
+        </div>
+
+    </div>
+<script type="text/javascript" src="./static/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="./static/js/base.js"></script>
+<script>
+
+    $(function (){
+        var port = window.location.port;
+        $("#server_port").text(port);
+    });
+
+    // 用户登陆
+    function login(){
+        $.ajax({
+            type:"POST",
+            url: basePath + "/user/login",
+            data:{
+                userName: $("#userName").val(),
+                password: $("#password").val()
+            },
+            dataType: 'json',
+            success:function(result){
+                // 登陆成功
+               if ( result.code == 0 ) {
+                   window.location.href = basePath + "/page/index";
+               }
+            }
+        });
+    }
+
+    // 清空输入
+    function clear(){
+
+        $("#userName,#password").val("");
+    }
+
+</script>
+</body>
+</html>
