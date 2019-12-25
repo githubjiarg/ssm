@@ -2,5 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.huawei.demo.mapper.UserMapper">
 
-
+    <select id="getTotal" parameterType="com.huawei.demo.entity.UserBean" resultType="java.lang.Integer">
+        select count(*) from  my_user t
+        where t.user_name=#{userName}
+        and t.password=#{password}
+    </select>
 </mapper>

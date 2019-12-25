@@ -9,3 +9,6 @@ body{
 .btn{
     margin: 5px 20px;
 }
+.btn_login{
+    margin-left: 60px;
+}

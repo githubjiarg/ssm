@@ -22,7 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if ( null != userBean) {
             return true;
         }
-        System.out.println("----------  拦截器  ------------");
+        System.out.println("----------  LoginInterceptor ------------");
         // 转发至登陆页面
         request.getRequestDispatcher("/login.html").forward(request,response);
         return false;
